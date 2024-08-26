@@ -109,7 +109,40 @@ Privacidade
 Ambos os serviços oferecem uma experiência de streaming de música de alta qualidade com fortes medidas de segurança e privacidade. A escolha entre Spotify e Deezer pode depender de preferências pessoais em relação à usabilidade, compatibilidade de dispositivos, e recursos exclusivos como o Flow do Deezer ou as playlists personalizadas do Spotify.
 
 ## 16/08/2024 escolher a arquitetura de uma empresa e comentar seus tradeoffs
-## Arquitetura do Tik Tok
+## Arquitetura da Netflix
+
+A Netflix utiliza uma arquitetura de microserviços em sua plataforma global de streaming. Essa arquitetura é composta por centenas de serviços pequenos e independentes, cada um responsável por uma funcionalidade específica, como recomendação de conteúdo, streaming de vídeo, autenticação de usuários, entre outros.
+
+Vantagens da Arquitetura de Microserviços na Netflix
+Escalabilidade
+
+Vantagem: Cada microserviço pode ser escalado independentemente com base na demanda. Por exemplo, serviços que lidam com streaming de vídeo podem ser escalados durante horários de pico, enquanto outros serviços, como a recomendação de conteúdo, podem ter uma escala diferente.
+Trade-off: A escalabilidade independente exige um monitoramento detalhado e ferramentas avançadas de orquestração e automação, aumentando a complexidade operacional.
+Resiliência
+
+Vantagem: A falha de um microserviço não compromete toda a plataforma. Se o serviço de recomendação falhar, por exemplo, os usuários ainda podem acessar e assistir ao conteúdo.
+Trade-off: Implementar resiliência requer a adoção de padrões como circuit breakers e fallbacks, além de uma arquitetura robusta para lidar com a comunicação entre serviços, o que aumenta a complexidade do desenvolvimento.
+Flexibilidade Tecnológica
+
+Vantagem: A Netflix pode escolher a melhor tecnologia para cada microserviço. Um serviço pode ser implementado em Java, outro em Node.js, e outro em Python, de acordo com a necessidade.
+Trade-off: A diversidade tecnológica pode aumentar a dificuldade de integração e o overhead de gerenciar diferentes stacks de tecnologia, incluindo treinamento de desenvolvedores e suporte a múltiplas plataformas.
+Agilidade no Desenvolvimento
+
+Vantagem: Equipes independentes podem desenvolver, testar e implantar seus microserviços sem interferir umas nas outras, acelerando o processo de desenvolvimento e implantação.
+Trade-off: A coordenação entre equipes é crucial para garantir a coesão do sistema, e a comunicação entre microserviços pode introduzir desafios de latência e consistência de dados.
+Desvantagens e Desafios
+Complexidade Operacional
+
+A manutenção de uma arquitetura de microserviços é complexa devido ao grande número de serviços que precisam ser monitorados, gerenciados e orquestrados. A Netflix investiu pesadamente em ferramentas internas, como o Simian Army, para garantir a resiliência e a robustez de sua infraestrutura.
+Comunicação entre Microserviços
+
+A comunicação entre os microserviços, especialmente em uma escala global como a da Netflix, pode introduzir latências, falhas de rede e desafios de consistência de dados. A Netflix utiliza mecanismos como service discovery e API gateways para gerenciar essa comunicação.
+Monitoramento e Observabilidade
+
+Com centenas de microserviços em execução, a observabilidade é crítica. A Netflix desenvolveu ferramentas como o Hystrix (circuit breaker) e o Turbine para monitorar a saúde e o desempenho de seus serviços. Entretanto, esse nível de monitoramento requer investimentos significativos em infraestrutura e pessoal.
+
+Conclusão
+A arquitetura de microserviços da Netflix oferece alta escalabilidade, resiliência e flexibilidade, o que permite que a empresa lide com milhões de usuários simultâneos em todo o mundo. No entanto, esses benefícios vêm com desafios significativos, incluindo a complexidade operacional, a necessidade de uma infraestrutura robusta, e a gestão de comunicação entre serviços. A Netflix superou muitos desses desafios por meio de uma forte cultura de engenharia, investimentos em automação e desenvolvimento de ferramentas internas para garantir a continuidade e a qualidade do serviço.
 
 
 ## 23/08/2024 fazer classes UML ao lado de código java mostrando a relação entre eles como fizemos no quadro
