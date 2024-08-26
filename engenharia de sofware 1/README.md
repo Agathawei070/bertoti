@@ -1,8 +1,17 @@
+## 09/08/2024 comentário do livro de engenharia de software no google
+
 "We see three critical differences between programming and software engineering: time, scale, and the trade-offs at play. On a software engineering project, engineers need to be more concerned with the passage of time and the eventual need for change. In a software engineering organization, we need to be more concerned about scale and efficiency, both for the software we produce as well as for the organization that is producing it. Finally, as software engineers, we are asked to make more complex decisions with higher-stakes outcomes, often based on imprecise estimates of time and growth."
 
 "Within Google, we sometimes say, 'Software engineering is programming integrated over time.' Programming is certainly a significant part of software engineering: after all, programming is how you generate new software in the first place. If you accept this distinction, it also becomes clear that we might need to delineate between programming tasks (development) and software engineering tasks (development, modification, maintenance). The addition of time adds an important new dimension to programming. Cubes aren’t squares, distance isn’t velocity. Software engineering isn’t programming."
 
-## 15/08/2024
+## Resumo 
+Esses dois trechos destacam a diferença entre programação e engenharia de software, apontando que, embora a programação seja fundamental para criar software, a engenharia de software envolve uma visão mais ampla e estratégica.
+
+O primeiro trecho enfatiza que na engenharia de software é essencial considerar o tempo (para garantir a manutenção e adaptação ao longo do tempo), escala (para lidar com o crescimento do software e da organização) e as compensações (tomada de decisões complexas e de maior risco).
+
+O segundo trecho reforça essa ideia, afirmando que a engenharia de software é mais do que apenas programação. Ela envolve o gerenciamento contínuo do software ao longo do tempo, incluindo desenvolvimento, modificação e manutenção, o que exige um conjunto de habilidades e preocupações além da simples criação de código.
+
+## 15/08/2024 Três exemplos de tradeoffs citando requisitos não funcionais
 ## ios vs android
 
 Desempenho
@@ -99,6 +108,11 @@ Privacidade
 
 Ambos os serviços oferecem uma experiência de streaming de música de alta qualidade com fortes medidas de segurança e privacidade. A escolha entre Spotify e Deezer pode depender de preferências pessoais em relação à usabilidade, compatibilidade de dispositivos, e recursos exclusivos como o Flow do Deezer ou as playlists personalizadas do Spotify.
 
-## 16/08/2024
+## 16/08/2024 escolher a arquitetura de uma empresa e comentar seus tradeoffs
 ## Arquitetura do Tik Tok
+
+
+## 23/08/2024 fazer classes UML ao lado de código java mostrando a relação entre eles como fizemos no quadro
+
+
 
