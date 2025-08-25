@@ -1,0 +1,158 @@
+📄 Documentação — Exemplo de Anti-Pattern vs Strategy em Java
+🎯 Objetivo
+
+Este exemplo mostra a diferença entre:
+
+🚫 Anti-Pattern com Herança — quando subclasses são criadas apenas para mudar um comportamento simples (no caso, o ataque de um personagem).
+
+✅ Padrão Strategy — quando usamos composição para permitir a troca dinâmica de comportamento sem inflar a hierarquia de classes.
+
+🚫 Versão com Herança (Anti-Pattern)
+Estrutura de Arquivos
+src/
+ ├── Personagem.java
+ ├── Guerreiro.java
+ ├── Arqueiro.java
+ ├── Mago.java
+ └── Main.java
+
+Personagem.java
+public class Personagem {
+    public void atacar() {
+        System.out.println("O personagem ataca de forma genérica!");
+    }
+}
+
+Guerreiro.java
+public class Guerreiro extends Personagem {
+    @Override
+    public void atacar() {
+        System.out.println("O guerreiro ataca com espada!");
+    }
+}
+
+Arqueiro.java
+public class Arqueiro extends Personagem {
+    @Override
+    public void atacar() {
+        System.out.println("O arqueiro dispara uma flecha!");
+    }
+}
+
+Mago.java
+public class Mago extends Personagem {
+    @Override
+    public void atacar() {
+        System.out.println("O mago lança uma bola de fogo!");
+    }
+}
+
+Main.java
+public class Main {
+    public static void main(String[] args) {
+        Personagem[] personagens = { new Guerreiro(), new Arqueiro(), new Mago() };
+
+        for (Personagem p : personagens) {
+            p.atacar();
+        }
+    }
+}
+
+Problemas do Anti-Pattern
+
+❌ Cada novo ataque exige uma nova subclasse.
+
+❌ Se quisermos um Mago com Espada, precisaríamos criar outra classe (MagoComEspada).
+
+❌ A hierarquia cresce de forma desnecessária, tornando o código rígido.
+
+✅ Versão com Strategy (Boa Prática)
+Estrutura de Arquivos
+src/
+ ├── EstrategiaAtaque.java
+ ├── AtaqueEspada.java
+ ├── AtaqueFlecha.java
+ ├── AtaqueMagia.java
+ ├── Personagem.java
+ └── Main.java
+
+EstrategiaAtaque.java
+public interface EstrategiaAtaque {
+    void atacar();
+}
+
+AtaqueEspada.java
+public class AtaqueEspada implements EstrategiaAtaque {
+    @Override
+    public void atacar() {
+        System.out.println("Ataca com espada!");
+    }
+}
+
+AtaqueFlecha.java
+public class AtaqueFlecha implements EstrategiaAtaque {
+    @Override
+    public void atacar() {
+        System.out.println("Dispara uma flecha!");
+    }
+}
+
+AtaqueMagia.java
+public class AtaqueMagia implements EstrategiaAtaque {
+    @Override
+    public void atacar() {
+        System.out.println("Lança uma bola de fogo!");
+    }
+}
+
+Personagem.java
+public class Personagem {
+    private EstrategiaAtaque estrategia;
+
+    public Personagem(EstrategiaAtaque estrategia) {
+        this.estrategia = estrategia;
+    }
+
+    public void atacar() {
+        estrategia.atacar();
+    }
+
+    public void setEstrategia(EstrategiaAtaque estrategia) {
+        this.estrategia = estrategia;
+    }
+}
+
+Main.java
+public class Main {
+    public static void main(String[] args) {
+        Personagem guerreiro = new Personagem(new AtaqueEspada());
+        Personagem arqueiro = new Personagem(new AtaqueFlecha());
+        Personagem mago = new Personagem(new AtaqueMagia());
+
+        Personagem[] personagens = { guerreiro, arqueiro, mago };
+
+        for (Personagem p : personagens) {
+            p.atacar();
+        }
+
+        // Mudando o comportamento em tempo de execução
+        mago.setEstrategia(new AtaqueEspada());
+        mago.atacar(); // Agora o mago ataca com espada!
+    }
+}
+
+Vantagens do Strategy
+
+✅ Permite mudar o comportamento em tempo de execução (setEstrategia).
+
+✅ Evita explosão de subclasses.
+
+✅ Segue o princípio da composição sobre herança.
+
+✅ Código mais flexível e fácil de manter.
+
+📌 Conclusão
+
+Usar herança para comportamento leva a hierarquias rígidas e difíceis de estender.
+
+O Strategy Pattern resolve isso permitindo a troca de comportamento de forma dinâmica.
